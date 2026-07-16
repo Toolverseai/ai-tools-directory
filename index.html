@@ -155,6 +155,25 @@ Discover the best free AI tools for writing, coding, images, videos and producti
 
 <hr>
 </div>
+ <script>
+const searchInput = document.querySelector('input[type="text"]');
+const cards = document.querySelectorAll('.tool-card');
+
+searchInput.addEventListener('keyup', function () {
+  const value = this.value.toLowerCase();
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+
+    if (text.includes(value)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
+ </script>
 </body>
+
 </html>
 
