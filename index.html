@@ -74,6 +74,9 @@ border:1px solid #334155;
 type="text"
 placeholder="🔍 Search AI Tools..."
 style="width:90%;max-width:500px;padding:12px;border-radius:10px;border:none;margin:20px 0;font-size:16px;">
+  <p id="noResults" style="display:none;color:#cbd5e1;font-size:18px;">
+❌ No AI tool found.
+  </p>
 <h1>🚀 Find the Best AI Tools</h1>
 
 <p style="font-size:20px;color:#cbd5e1;">
@@ -157,18 +160,24 @@ Discover the best free AI tools for writing, coding, images, videos and producti
  <script>
 const searchInput = document.querySelector('input[type="text"]');
 const cards = document.querySelectorAll('.tool-card');
-
+const noResults = document.getElementById("noResults");
 searchInput.addEventListener('keyup', function () {
   const value = this.value.toLowerCase();
 
-  cards.forEach(card => {
+  let found = false;
+
+cards.forEach(card => {
     const text = card.innerText.toLowerCase();
 
     if (text.includes(value)) {
-      card.style.display = "block";
+        card.style.display = "block";
+        found = true;
     } else {
-      card.style.display = "none";
+        card.style.display = "none";
     }
+});
+
+noResults.style.display = found ? "none" : "block";
   });
 });
  </script>
